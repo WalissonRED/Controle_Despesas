@@ -21,12 +21,22 @@ const addTransactionsIntoDOM = transaction => {
 
 }
 
- const updateBalanceValues = () => {
-   const transactionAmount = dummyTransactions.map(transaction => transaction.amount)
- }
-
- const init = () => {
+const updateBalanceValues = () => {
+    const transactionsAmount = dummyTransactions
+        .map(transactions => transactions.amount)
+    const total = transactionsAmount
+        .reduce((accumulator, transactions) => accumulator + transactions,0)
+        .toFixed(2)
+    const income = transactionsAmount
+        .filter(value => value > 0)
+        .reduce ((acumulator, value)=> acumulator + value, 0)
+        .toFixed(2) 
+    
+    console.log(income)
+}
+const init = () => {
      dummyTransactions.forEach (addTransactionsIntoDOM)
+     updateBalanceValues()
  }
 
  init ()

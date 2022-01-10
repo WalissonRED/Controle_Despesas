@@ -31,8 +31,12 @@ const updateBalanceValues = () => {
         .filter(value => value > 0)
         .reduce ((acumulator, value)=> acumulator + value, 0)
         .toFixed(2) 
-    
-    console.log(income)
+    const expense = transactionsAmount
+        .filter(value => value < 0)
+        .reduce ((accumulator, value)=> accumulator + value, 0)
+        .toFixed(2)
+
+    console.log(expense)
 }
 const init = () => {
      dummyTransactions.forEach (addTransactionsIntoDOM)
